@@ -56,3 +56,27 @@ py_test(
     tags = ["small"],
     deps = [":artifacts"],
 )
+
+py_library(
+    name = "config",
+    srcs = [
+        "__init__.py",
+        "config/__init__.py",
+        "config/loader.py",
+        "//libs:__init__.py",
+    ],
+    visibility = ["//visibility:public"],
+    deps = [
+        "@pypi//jsonschema",
+        "@pypi//pyyaml",
+    ],
+)
+
+py_test(
+    name = "config_test",
+    srcs = ["config/loader_test.py"],
+    main = "config/loader_test.py",
+    size = "small",
+    tags = ["small"],
+    deps = [":config"],
+)
