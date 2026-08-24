@@ -14,6 +14,10 @@ SCHEMA_PATH = pathlib.Path(__file__).resolve().parent / "component_schema.json"
 PLACEHOLDER_OWNERS = {"TBD", "tbd", ""}
 
 
+def _in_bazel_output(root: pathlib.Path, path: pathlib.Path) -> bool:
+    return any(part.startswith("bazel-") for part in path.parts[len(root.parts) :])
+
+
 def validate_component(doc: dict) -> list[str]:
     schema = json.loads(SCHEMA_PATH.read_text())
     validator = jsonschema.Draft202012Validator(schema)
@@ -31,7 +35,7 @@ def main() -> int:
     root = pathlib.Path(os.environ.get("BUILD_WORKSPACE_DIRECTORY", pathlib.Path.cwd()))
     failures = 0
     for path in sorted(root.rglob("component.yaml")):
-        if "bazel-" in path.parts[len(root.parts) :]:
+        if _in_bazel_output(root, path):
             continue
         errors = validate_component(yaml.safe_load(path.read_text()))
         if errors:
