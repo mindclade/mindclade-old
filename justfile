@@ -11,10 +11,13 @@ doctor:
     python3 tools/repo/doctor.py
 
 format:
-    @echo "TODO: bazel run //tools/dev:format"
+    uv run ruff format .
+    uv run ruff check --fix .
 
 lint:
-    @echo "TODO: bazel test //... --test_tag_filters=lint"
+    uv run ruff format --check .
+    uv run ruff check .
+    uv lock --check
 
 test:
     bazelisk test //...

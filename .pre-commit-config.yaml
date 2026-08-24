@@ -11,5 +11,10 @@ repos:
       - id: check-added-large-files
         args: [--maxkb=1024]
       - id: detect-private-key
+  - repo: https://github.com/astral-sh/ruff-pre-commit
+    rev: v0.9.6
+    hooks:
+      - id: ruff
+      - id: ruff-format
   # Per-language formatters and linters are added as each lane comes online
   # (ruff, rustfmt/clippy, gofmt, prettier, buf).

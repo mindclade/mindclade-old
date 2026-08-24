@@ -13,8 +13,25 @@ members = [
 ]
 
 [dependency-groups]
-dev = []
+dev = [
+    "jsonschema>=4.26.0",
+    "pyyaml>=6.0.3",
+    "ruff>=0.16.4",
+]
 cpu = []
 gpu = []
 docs = []
 release = []
+
+[tool.ruff]
+line-length = 100
+target-version = "py312"
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B"]
+
+[tool.ruff.lint.per-file-ignores]
+".buildkite/**" = ["E402"]
+"models/api/model.py" = ["F821"]
+"training/api/engine.py" = ["F821"]
+"training/api/task.py" = ["F821"]
