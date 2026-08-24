@@ -100,3 +100,23 @@ py_test(
     tags = ["small"],
     deps = [":observability"],
 )
+
+py_library(
+    name = "testing",
+    srcs = [
+        "__init__.py",
+        "testing/__init__.py",
+        "testing/golden.py",
+        "//libs:__init__.py",
+    ],
+    visibility = ["//visibility:public"],
+)
+
+py_test(
+    name = "testing_test",
+    srcs = ["testing/golden_test.py"],
+    main = "testing/golden_test.py",
+    size = "small",
+    tags = ["small"],
+    deps = [":testing"],
+)
