@@ -19,7 +19,16 @@ class IdsTest(unittest.TestCase):
             new_id("submarine")
 
     def test_malformed_values_invalid(self) -> None:
-        for bad in ("", "ds", "ds_", "ds_XYZ", "zz_" + "a" * 32, "ds_" + "a" * 31):
+        for bad in (
+            "",
+            "ds",
+            "ds_",
+            "ds_XYZ",
+            "zz_" + "a" * 32,
+            "ds_" + "a" * 31,
+            "ds_" + "a" * 32 + "\n",
+            "\nds_" + "a" * 32,
+        ):
             self.assertFalse(is_valid(bad), bad)
 
     def test_ids_are_unique(self) -> None:

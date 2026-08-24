@@ -24,7 +24,7 @@ def new_id(kind: str) -> str:
 
 
 def parse_id(value: str) -> tuple[str, str]:
-    match = _PATTERN.match(value)
+    match = _PATTERN.fullmatch(value)
     if not match or match.group(1) not in _PREFIX_TO_KIND:
         raise ValueError(f"malformed identifier: {value!r}")
     return _PREFIX_TO_KIND[match.group(1)], match.group(2)
