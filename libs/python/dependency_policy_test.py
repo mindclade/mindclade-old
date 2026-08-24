@@ -4,17 +4,19 @@ import ast
 import pathlib
 import unittest
 
-FORBIDDEN_ROOTS = frozenset({
-    "torch",
-    "torchvision",
-    "torchaudio",
-    "triton",
-    "flash_attn",
-    "transformer_engine",
-    "cuda",
-    "cupy",
-    "nvidia",
-})
+FORBIDDEN_ROOTS = frozenset(
+    {
+        "torch",
+        "torchvision",
+        "torchaudio",
+        "triton",
+        "flash_attn",
+        "transformer_engine",
+        "cuda",
+        "cupy",
+        "nvidia",
+    }
+)
 
 LIBS_PYTHON = pathlib.Path(__file__).resolve().parent
 

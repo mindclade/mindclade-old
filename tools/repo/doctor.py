@@ -1,4 +1,5 @@
 """Verify the local environment matches repository toolchain pins."""
+
 from __future__ import annotations
 
 import json

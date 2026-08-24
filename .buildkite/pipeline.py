@@ -5,6 +5,7 @@ Steps are selected from changed files, the reverse dependency graph, component
 metadata, trust context, target tags, and release intent. The generated
 pipeline is persisted as a build artifact for audit.
 """
+
 from __future__ import annotations
 
 import json

@@ -11,7 +11,7 @@ class TrustContext:
     release_intent: bool
 
     @classmethod
-    def from_environment(cls) -> "TrustContext":
+    def from_environment(cls) -> TrustContext:
         pull_request = os.environ.get("BUILDKITE_PULL_REQUEST", "false") != "false"
         branch = os.environ.get("BUILDKITE_BRANCH", "")
         tag = os.environ.get("BUILDKITE_TAG", "")
