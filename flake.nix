@@ -22,9 +22,12 @@
             go
             just
             pre-commit
-            python3
             git
+            python312
           ];
+          shellHook = ''
+            export PATH="${pkgs.python312}/bin:$PATH"
+          '';
         };
       });
     };
