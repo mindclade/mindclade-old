@@ -10,6 +10,9 @@ bootstrap:
 doctor:
     python3 tools/repo/doctor.py
 
+validate-metadata:
+    bazelisk run //tools/repo:validate_components
+
 format:
     uv run ruff format .
     uv run ruff check --fix .

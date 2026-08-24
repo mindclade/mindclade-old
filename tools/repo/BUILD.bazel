@@ -1,0 +1,33 @@
+load("@rules_python//python:py_binary.bzl", "py_binary")
+load("@rules_python//python:py_test.bzl", "py_test")
+
+py_test(
+    name = "doctor_test",
+    srcs = ["doctor_test.py", "doctor.py"],
+    size = "small",
+    tags = ["small"],
+    imports = ["."],
+)
+
+py_binary(
+    name = "validate_components",
+    srcs = ["validate_components.py"],
+    data = ["component_schema.json"],
+    deps = [
+        "@pypi//jsonschema",
+        "@pypi//pyyaml",
+    ],
+)
+
+py_test(
+    name = "validate_components_test",
+    srcs = ["validate_components_test.py", "validate_components.py"],
+    data = ["component_schema.json"],
+    size = "small",
+    tags = ["small"],
+    imports = ["."],
+    deps = [
+        "@pypi//jsonschema",
+        "@pypi//pyyaml",
+    ],
+)
