@@ -13,7 +13,18 @@
     {
       devShells = forAll (pkgs: {
         default = pkgs.mkShell {
-          packages = [ ];
+          packages = with pkgs; [
+            bazelisk
+            buf
+            uv
+            nodejs
+            pnpm
+            go
+            just
+            pre-commit
+            python3
+            git
+          ];
         };
       });
     };
