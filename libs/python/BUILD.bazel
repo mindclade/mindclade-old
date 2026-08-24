@@ -1,3 +1,4 @@
+load("@rules_python//python:py_library.bzl", "py_library")
 load("@rules_python//python:py_test.bzl", "py_test")
 
 py_test(
@@ -10,4 +11,24 @@ py_test(
         allow_empty = True,
     ),
     tags = ["small"],
+)
+
+py_library(
+    name = "identifiers",
+    srcs = [
+        "__init__.py",
+        "identifiers/__init__.py",
+        "identifiers/ids.py",
+        "//libs:__init__.py",
+    ],
+    visibility = ["//visibility:public"],
+)
+
+py_test(
+    name = "identifiers_test",
+    srcs = ["identifiers/ids_test.py"],
+    main = "identifiers/ids_test.py",
+    size = "small",
+    tags = ["small"],
+    deps = [":identifiers"],
 )
