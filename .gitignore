@@ -45,3 +45,6 @@ result-*
 *.key
 .env
 .env.*
+
+# SDD scratch workspaces (never committed)
+.superpowers/
