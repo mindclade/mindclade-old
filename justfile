@@ -17,13 +17,13 @@ lint:
     @echo "TODO: bazel test //... --test_tag_filters=lint"
 
 test:
-    @echo "TODO: bazel test //..."
+    bazelisk test //...
 
 test-affected:
     @echo "TODO: bazel test \$(affected targets from .buildkite/lib/affected_targets.py)"
 
 build:
-    @echo "TODO: bazel build //..."
+    bazelisk build //...
 
 build-affected:
     @echo "TODO: bazel build \$(affected targets from .buildkite/lib/affected_targets.py)"

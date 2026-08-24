@@ -1,7 +1,14 @@
-common --enable_bzlmod
+# Bazel 9 removed WORKSPACE support entirely, so Bzlmod is the only dependency
+# graph by construction — no flag needed to enforce "Bzlmod only" (§9.1).
 
 build --incompatible_strict_action_env
+build --incompatible_default_to_explicit_init_py
 test --test_output=errors
+
+# MODULE.bazel.lock: dev updates it (Bazel default, made explicit); CI treats
+# drift as an error and never rewrites it.
+common --lockfile_mode=update
+common:ci --lockfile_mode=error
 
 # Remote cache and remote execution endpoints are injected per-environment by
 # CI trust context, never committed here.
