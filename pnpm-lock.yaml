@@ -4,4 +4,10 @@ settings:
   autoInstallPeers: true
   excludeLinksFromLockfile: false
 
-importers: {}
+importers:
+
+  .: {}
+
+  apps/console: {}
+
+  sdk/typescript: {}

@@ -4,10 +4,11 @@ default:
     @just --list
 
 bootstrap:
-    @echo "TODO: nix develop && uv sync && pnpm install"
+    uv sync --group dev
+    pnpm install
 
 doctor:
-    @echo "TODO: verify pinned toolchains match lockfiles"
+    python3 tools/repo/doctor.py
 
 format:
     @echo "TODO: bazel run //tools/dev:format"
