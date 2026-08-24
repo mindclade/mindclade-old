@@ -1,0 +1,14 @@
+load("@rules_python//python:py_test.bzl", "py_test")
+
+py_test(
+    name = "schema_test",
+    srcs = ["schema_test.py"],
+    data = [
+        "artifact_manifest.schema.json",
+        "fixtures/valid_minimal.json",
+        "fixtures/invalid_missing_digest.json",
+    ],
+    size = "small",
+    tags = ["small"],
+    deps = ["@pypi//jsonschema"],
+)

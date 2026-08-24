@@ -1,0 +1,10 @@
+{
+  "schemaVersion": "v1",
+  "namespace": "datasets",
+  "name": "pdb-snapshot-2026-08",
+  "mediaType": "application/vnd.mindclade.dataset.shard+zstd",
+  "digest": {"algorithm": "sha256", "hex": "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"},
+  "sizeBytes": 1048576,
+  "storageLocator": "gs://placeholder-bucket/objects/aa/aaaa",
+  "policy": {"classification": "internal"}
+}

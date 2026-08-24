@@ -1,0 +1,35 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://mindclade.dev/schemas/artifact_manifest/v1",
+  "title": "ArtifactManifest",
+  "type": "object",
+  "additionalProperties": false,
+  "required": ["schemaVersion", "namespace", "name", "mediaType", "digest", "sizeBytes", "storageLocator", "policy"],
+  "properties": {
+    "schemaVersion": {"const": "v1"},
+    "namespace": {"type": "string", "pattern": "^[a-z][a-z0-9-]*$"},
+    "name": {"type": "string", "minLength": 1},
+    "mediaType": {"type": "string", "minLength": 1},
+    "digest": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["algorithm", "hex"],
+      "properties": {
+        "algorithm": {"enum": ["sha256"]},
+        "hex": {"type": "string", "pattern": "^[0-9a-f]{64}$"}
+      }
+    },
+    "sizeBytes": {"type": "integer", "minimum": 0},
+    "storageLocator": {"type": "string", "minLength": 1},
+    "policy": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": ["classification"],
+      "properties": {
+        "classification": {"enum": ["public", "internal", "confidential", "restricted-biological", "regulated-human-derived"]},
+        "encryption": {"type": "string"}
+      }
+    },
+    "lineageRef": {"type": "string"}
+  }
+}
