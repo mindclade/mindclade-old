@@ -12,3 +12,9 @@ py_test(
     tags = ["small"],
     deps = ["@pypi//jsonschema"],
 )
+
+filegroup(
+    name = "schema",
+    srcs = ["artifact_manifest.schema.json"],
+    visibility = ["//visibility:public"],
+)

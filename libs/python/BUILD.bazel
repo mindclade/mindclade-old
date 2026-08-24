@@ -32,3 +32,26 @@ py_test(
     tags = ["small"],
     deps = [":identifiers"],
 )
+
+py_library(
+    name = "artifacts",
+    srcs = [
+        "artifacts/__init__.py",
+        "artifacts/refs.py",
+    ],
+    data = ["//protocols/schemas/artifact_manifest:schema"],
+    visibility = ["//visibility:public"],
+    deps = [
+        ":identifiers",
+        "@pypi//jsonschema",
+    ],
+)
+
+py_test(
+    name = "artifacts_test",
+    srcs = ["artifacts/refs_test.py"],
+    main = "artifacts/refs_test.py",
+    size = "small",
+    tags = ["small"],
+    deps = [":artifacts"],
+)
