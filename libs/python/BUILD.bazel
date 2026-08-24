@@ -36,13 +36,14 @@ py_test(
 py_library(
     name = "artifacts",
     srcs = [
+        "__init__.py",
         "artifacts/__init__.py",
         "artifacts/refs.py",
+        "//libs:__init__.py",
     ],
     data = ["//protocols/schemas/artifact_manifest:schema"],
     visibility = ["//visibility:public"],
     deps = [
-        ":identifiers",
         "@pypi//jsonschema",
     ],
 )

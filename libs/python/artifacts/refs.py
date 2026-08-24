@@ -61,6 +61,8 @@ def to_manifest(ref: ArtifactRef) -> dict:
 
 def from_manifest(doc: dict) -> ArtifactRef:
     _check(doc)
+    if isinstance(doc["sizeBytes"], bool) or not isinstance(doc["sizeBytes"], int):
+        raise ManifestError("sizeBytes must be an integer")
     return ArtifactRef(
         namespace=doc["namespace"],
         name=doc["name"],

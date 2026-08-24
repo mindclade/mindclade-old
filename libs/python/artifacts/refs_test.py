@@ -53,6 +53,18 @@ class ArtifactRefTest(unittest.TestCase):
         path = pathlib.Path(handle.name)
         self.assertEqual(sha256_file(path), hashlib.sha256(b"mindclade").hexdigest())
 
+    def test_float_sizeBytes_rejected(self) -> None:
+        doc = to_manifest(_ref())
+        doc["sizeBytes"] = 42.0
+        with self.assertRaises(ManifestError):
+            from_manifest(doc)
+
+    def test_bool_sizeBytes_rejected(self) -> None:
+        doc = to_manifest(_ref())
+        doc["sizeBytes"] = True
+        with self.assertRaises(ManifestError):
+            from_manifest(doc)
+
 
 if __name__ == "__main__":
     unittest.main()
