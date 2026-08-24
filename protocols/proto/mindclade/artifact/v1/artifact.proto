@@ -1,0 +1,18 @@
+syntax = "proto3";
+
+package mindclade.artifact.v1;
+
+import "mindclade/common/v1/digest.proto";
+
+// Stable reference to an immutable large artifact in object storage.
+message ArtifactRef {
+  string namespace = 1;
+  string name = 2;
+  string media_type = 3;
+  mindclade.common.v1.Digest digest = 4;
+  uint64 size_bytes = 5;
+  string schema_version = 6;
+  string storage_locator = 7;
+  string policy_classification = 8;
+  string lineage_ref = 9;
+}

@@ -35,7 +35,8 @@ build-affected:
     @echo "TODO: bazel build \$(affected targets from .buildkite/lib/affected_targets.py)"
 
 proto:
-    @echo "TODO: buf lint && buf generate"
+    buf lint
+    buf breaking --against protocols/compatibility/baselines/protocols.binpb
 
 docs:
     @echo "TODO: bazel build //docs/..."

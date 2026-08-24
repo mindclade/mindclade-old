@@ -1,0 +1,11 @@
+syntax = "proto3";
+
+package mindclade.common.v1;
+
+// Content digest for content-addressed artifacts.
+message Digest {
+  // Digest algorithm identifier, e.g. "sha256".
+  string algorithm = 1;
+  // Lowercase hex encoding of the digest bytes.
+  string hex = 2;
+}
