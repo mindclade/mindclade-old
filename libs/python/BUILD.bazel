@@ -80,3 +80,23 @@ py_test(
     tags = ["small"],
     deps = [":config"],
 )
+
+py_library(
+    name = "observability",
+    srcs = [
+        "__init__.py",
+        "observability/__init__.py",
+        "observability/logging.py",
+        "//libs:__init__.py",
+    ],
+    visibility = ["//visibility:public"],
+)
+
+py_test(
+    name = "observability_test",
+    srcs = ["observability/logging_test.py"],
+    main = "observability/logging_test.py",
+    size = "small",
+    tags = ["small"],
+    deps = [":observability"],
+)
