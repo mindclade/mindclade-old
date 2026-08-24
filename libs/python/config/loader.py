@@ -25,7 +25,10 @@ def _strict(schema: dict) -> dict:
 
 def load_config(path: pathlib.Path, schema: dict) -> dict:
     text = path.read_text()
-    doc = yaml.safe_load(text) if path.suffix in {".yaml", ".yml"} else json.loads(text)
+    try:
+        doc = yaml.safe_load(text) if path.suffix in {".yaml", ".yml"} else json.loads(text)
+    except (json.JSONDecodeError, yaml.YAMLError) as exc:
+        raise ConfigError(str(exc)) from exc
     errors = list(jsonschema.Draft202012Validator(_strict(schema)).iter_errors(doc))
     if errors:
         raise ConfigError("; ".join(e.message for e in errors))

@@ -42,6 +42,14 @@ class LoadConfigTest(unittest.TestCase):
         )
         self.assertEqual(len(config_digest({})), 64)
 
+    def test_malformed_json_raises_config_error(self) -> None:
+        with self.assertRaises(ConfigError):
+            load_config(_write("{not valid json", ".json"), SCHEMA)
+
+    def test_malformed_yaml_raises_config_error(self) -> None:
+        with self.assertRaises(ConfigError):
+            load_config(_write("name: [unterminated", ".yaml"), SCHEMA)
+
 
 if __name__ == "__main__":
     unittest.main()
