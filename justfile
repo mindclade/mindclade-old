@@ -26,13 +26,19 @@ test:
     bazelisk test //...
 
 test-affected:
-    @echo "TODO: bazel test \$(affected targets from .buildkite/lib/affected_targets.py)"
+    #!/usr/bin/env bash
+    set -euo pipefail
+    targets=$(python3 tools/ci/affected.py --base origin/main 2>/dev/null || python3 tools/ci/affected.py --base HEAD~1)
+    if [ -n "$targets" ]; then bazelisk test $targets; else echo "no affected targets"; fi
 
 build:
     bazelisk build //...
 
 build-affected:
-    @echo "TODO: bazel build \$(affected targets from .buildkite/lib/affected_targets.py)"
+    #!/usr/bin/env bash
+    set -euo pipefail
+    targets=$(python3 tools/ci/affected.py --base origin/main 2>/dev/null || python3 tools/ci/affected.py --base HEAD~1)
+    if [ -n "$targets" ]; then bazelisk build $targets; else echo "no affected targets"; fi
 
 proto:
     buf lint

@@ -1,0 +1,16 @@
+load("@rules_python//python:py_binary.bzl", "py_binary")
+load("@rules_python//python:py_test.bzl", "py_test")
+
+py_binary(
+    name = "affected",
+    srcs = ["affected.py"],
+    visibility = ["//visibility:public"],
+)
+
+py_test(
+    name = "affected_test",
+    srcs = ["affected_test.py", "affected.py"],
+    size = "small",
+    tags = ["small"],
+    imports = ["."],
+)
