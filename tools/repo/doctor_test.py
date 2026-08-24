@@ -4,7 +4,7 @@ import pathlib
 import tempfile
 import unittest
 
-from doctor import compare_version, parse_pins
+from doctor import compare_version, compare_version_floor, parse_pins
 
 
 class ParsePinsTest(unittest.TestCase):
@@ -31,6 +31,20 @@ class CompareVersionTest(unittest.TestCase):
     def test_mismatch_rejected(self) -> None:
         self.assertFalse(compare_version("3.12", "3.11.9"))
         self.assertFalse(compare_version("9.15.0", "10.0.0"))
+
+
+class CompareVersionFloorTest(unittest.TestCase):
+    def test_go_floor_accepts_newer_versions(self) -> None:
+        self.assertTrue(compare_version_floor("1.23", "1.26.5"))
+
+    def test_go_floor_accepts_exact_match(self) -> None:
+        self.assertTrue(compare_version_floor("1.23", "1.23"))
+
+    def test_go_floor_rejects_older_versions(self) -> None:
+        self.assertFalse(compare_version_floor("1.23", "1.22.9"))
+
+    def test_go_floor_accepts_major_version_jump(self) -> None:
+        self.assertTrue(compare_version_floor("1.23", "2.0"))
 
 
 if __name__ == "__main__":

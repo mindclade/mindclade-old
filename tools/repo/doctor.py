@@ -27,6 +27,21 @@ def compare_version(pin: str, actual: str) -> bool:
     return actual == pin or actual.startswith(pin + ".")
 
 
+def compare_version_floor(pin: str, actual: str) -> bool:
+    def parse_version(v: str) -> tuple[int, ...]:
+        parts = []
+        for part in v.split("."):
+            try:
+                parts.append(int(re.match(r"(\d+)", part).group(1)))
+            except (ValueError, AttributeError):
+                break
+        return tuple(parts)
+
+    pin_tuple = parse_version(pin)
+    actual_tuple = parse_version(actual)
+    return actual_tuple >= pin_tuple
+
+
 def _probe(cmd: list[str], pattern: str) -> str | None:
     if shutil.which(cmd[0]) is None:
         return None
@@ -51,6 +66,11 @@ def main() -> int:
         actual = _probe(cmd, pattern)
         if actual is None:
             failures.append(f"{tool}: not found ({cmd[0]})")
+        elif tool == "go":
+            if not compare_version_floor(pins[tool], actual):
+                failures.append(f"{tool}: pinned {pins[tool]}, found {actual}")
+            else:
+                print(f"ok {tool} {actual}")
         elif not compare_version(pins[tool], actual):
             failures.append(f"{tool}: pinned {pins[tool]}, found {actual}")
         else:
