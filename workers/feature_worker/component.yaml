@@ -1,0 +1,25 @@
+apiVersion: mindclade.dev/v1
+kind: Worker
+metadata:
+  name: feature-worker
+  owner: data-platform
+spec:
+  maturity: experimental
+  tier: 2
+  languages: [rust, python]
+  buildTargets:
+    - //workers/feature_worker/...
+  testTargets:
+    - //workers/feature_worker/...
+  artifacts:
+    - type: oci
+      name: feature-worker
+  protocols:
+    - mindclade.dataset.v1
+    - mindclade.artifact.v1
+  dataClassifications:
+    - internal
+    - restricted-biological
+  runtime:
+    kubernetes: true
+    gpu: false

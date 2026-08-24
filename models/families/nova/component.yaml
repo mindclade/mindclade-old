@@ -1,0 +1,23 @@
+apiVersion: mindclade.dev/v1
+kind: Model
+metadata:
+  name: nova
+  owner: ml-research
+spec:
+  maturity: experimental
+  tier: 2
+  languages: [python]
+  buildTargets:
+    - //models/families/nova/...
+  testTargets:
+    - //models/families/nova/...
+  artifacts:
+    - type: oci
+      name: nova
+  protocols:
+    - mindclade.model.v1
+  dataClassifications:
+    - internal
+  runtime:
+    kubernetes: false
+    gpu: true

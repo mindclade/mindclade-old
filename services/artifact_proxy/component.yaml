@@ -1,0 +1,25 @@
+apiVersion: mindclade.dev/v1
+kind: Service
+metadata:
+  name: artifact-proxy
+  owner: data-plane
+spec:
+  maturity: experimental
+  tier: 1
+  languages: [rust]
+  buildTargets:
+    - //services/artifact_proxy:artifact-proxy
+  testTargets:
+    - //services/artifact_proxy/...
+  artifacts:
+    - type: oci
+      name: artifact-proxy
+  protocols:
+    - mindclade.artifact.v1
+  dataClassifications:
+    - internal
+    - confidential-metadata
+    - restricted-biological
+  runtime:
+    kubernetes: true
+    gpu: false

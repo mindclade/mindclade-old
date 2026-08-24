@@ -1,0 +1,20 @@
+[project]
+name = "mindclade-monorepo"
+version = "0.0.0"
+description = "Mindclade polyglot monorepo Python workspace root"
+requires-python = ">=3.12"
+
+[tool.uv]
+package = false
+
+[tool.uv.workspace]
+members = [
+    "sdk/python",
+]
+
+[dependency-groups]
+dev = []
+cpu = []
+gpu = []
+docs = []
+release = []

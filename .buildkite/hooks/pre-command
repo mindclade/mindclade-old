@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+echo "--- trust context: ${MINDCLADE_TRUST_CONTEXT:-unset}"

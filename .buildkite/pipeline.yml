@@ -1,0 +1,6 @@
+steps:
+  - label: ":pipeline: generate pipeline"
+    key: pipeline-generate
+    command: python3 .buildkite/pipeline.py | buildkite-agent pipeline upload
+    agents:
+      queue: untrusted-cpu

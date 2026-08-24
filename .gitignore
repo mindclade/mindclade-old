@@ -1,0 +1,47 @@
+# Bazel
+bazel-*
+.bazelrc.user
+
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+dist/
+
+# Rust
+target/
+
+# Go
+*.test
+
+# Node
+node_modules/
+.next/
+.turbo/
+
+# Nix
+result
+result-*
+
+# IDE / OS
+.idea/
+.DS_Store
+
+# Large artifacts never belong in Git: datasets, weights, experiment output.
+*.ckpt
+*.safetensors
+*.pt
+*.pth
+*.npz
+*.parquet
+*.h5
+
+# Secrets never belong in Git.
+*.pem
+*.key
+.env
+.env.*

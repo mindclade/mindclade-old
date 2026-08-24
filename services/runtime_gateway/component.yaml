@@ -1,0 +1,25 @@
+apiVersion: mindclade.dev/v1
+kind: Service
+metadata:
+  name: runtime-gateway
+  owner: platform-control-plane
+spec:
+  maturity: experimental
+  tier: 1
+  languages: [go]
+  buildTargets:
+    - //services/runtime_gateway/cmd/runtime-gateway
+  testTargets:
+    - //services/runtime_gateway/...
+  artifacts:
+    - type: oci
+      name: runtime-gateway
+  protocols:
+    - mindclade.common.v1
+    - mindclade.inference.v1
+  dataClassifications:
+    - internal
+    - confidential-metadata
+  runtime:
+    kubernetes: true
+    gpu: false

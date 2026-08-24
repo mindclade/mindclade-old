@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Cache namespaces and credentials are derived from trust context: untrusted
+# pull requests receive isolated namespaces and no production secrets.
+if [[ "${BUILDKITE_PULL_REQUEST:-false}" != "false" ]]; then
+  export MINDCLADE_TRUST_CONTEXT="untrusted"
+else
+  export MINDCLADE_TRUST_CONTEXT="trusted"
+fi

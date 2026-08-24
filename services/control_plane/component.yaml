@@ -1,0 +1,31 @@
+apiVersion: mindclade.dev/v1
+kind: Service
+metadata:
+  name: control-plane
+  owner: platform-control-plane
+spec:
+  maturity: experimental
+  tier: 1
+  languages: [go]
+  buildTargets:
+    - //services/control_plane/cmd/control-plane
+  testTargets:
+    - //services/control_plane/...
+  artifacts:
+    - type: oci
+      name: control-plane
+  protocols:
+    - mindclade.common.v1
+    - mindclade.artifact.v1
+    - mindclade.dataset.v1
+    - mindclade.experiment.v1
+    - mindclade.model.v1
+    - mindclade.training.v1
+    - mindclade.policy.v1
+    - mindclade.admin.v1
+  dataClassifications:
+    - internal
+    - confidential-metadata
+  runtime:
+    kubernetes: true
+    gpu: false

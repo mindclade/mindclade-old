@@ -1,0 +1,27 @@
+# Fallback: architecture council reviews anything without a narrower owner.
+* @mindclade/architecture-council
+
+/protocols/ @mindclade/platform-contracts
+/libs/python/ @mindclade/ml-platform
+/libs/rust/ @mindclade/data-plane
+/libs/go/ @mindclade/platform-control-plane
+/libs/typescript/ @mindclade/product-web
+/bio/ @mindclade/comp-bio
+/data/ @mindclade/data-platform
+/kernels/ @mindclade/ml-performance
+/runtime/ @mindclade/ml-runtime
+/models/ @mindclade/ml-research
+/training/ @mindclade/ml-training
+/evaluation/ @mindclade/ml-evaluation
+/inference/ @mindclade/ml-inference
+/services/ @mindclade/platform-control-plane
+/workers/ @mindclade/platform-workers
+/sdk/ @mindclade/developer-experience
+/apps/ @mindclade/product-web
+/deploy/ @mindclade/platform-delivery
+/research/ @mindclade/ml-research
+/tools/ @mindclade/developer-experience
+/docs/adr/ @mindclade/architecture-council
+/third_party/ @mindclade/security
+/.github/ @mindclade/developer-experience @mindclade/security
+/.buildkite/ @mindclade/developer-experience @mindclade/security

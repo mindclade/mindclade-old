@@ -1,0 +1,14 @@
+module(
+    name = "mindclade",
+    version = "0.0.0",
+)
+
+# Language rules are pinned here as each lane comes online; MODULE.bazel is the
+# only Bazel dependency registry (no legacy WORKSPACE).
+# bazel_dep(name = "rules_python", version = "")
+# bazel_dep(name = "rules_rust", version = "")
+# bazel_dep(name = "rules_go", version = "")
+# bazel_dep(name = "gazelle", version = "")
+# bazel_dep(name = "aspect_rules_js", version = "")
+# bazel_dep(name = "rules_proto", version = "")
+# bazel_dep(name = "rules_oci", version = "")

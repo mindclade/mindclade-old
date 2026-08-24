@@ -1,0 +1,16 @@
+name: lightweight-presubmit
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  quick-checks:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Formatting and configuration validation
+        run: |
+          echo "TODO: fast formatting and config validation; heavy work runs in Buildkite"

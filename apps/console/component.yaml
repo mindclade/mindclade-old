@@ -1,0 +1,23 @@
+apiVersion: mindclade.dev/v1
+kind: Application
+metadata:
+  name: console
+  owner: product-web
+spec:
+  maturity: experimental
+  tier: 2
+  languages: [typescript]
+  buildTargets:
+    - //apps/console/...
+  testTargets:
+    - //apps/console/...
+  artifacts:
+    - type: oci
+      name: console
+  protocols:
+    - mindclade.common.v1
+  dataClassifications:
+    - internal
+  runtime:
+    kubernetes: true
+    gpu: false

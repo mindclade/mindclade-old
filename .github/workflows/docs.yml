@@ -1,0 +1,19 @@
+name: docs
+
+on:
+  pull_request:
+    paths:
+      - "docs/**"
+      - "**/README.md"
+
+permissions:
+  contents: read
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Docs build and link smoke test
+        run: |
+          echo "TODO: build docs and check links"

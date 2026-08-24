@@ -1,0 +1,16 @@
+name: required-check
+
+on:
+  pull_request:
+
+permissions:
+  contents: read
+  statuses: read
+
+jobs:
+  aggregate:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Aggregate required checks
+        run: |
+          echo "TODO: aggregate GitHub and Buildkite statuses into the single required check"

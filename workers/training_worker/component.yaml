@@ -1,0 +1,25 @@
+apiVersion: mindclade.dev/v1
+kind: Worker
+metadata:
+  name: training-worker
+  owner: ml-training
+spec:
+  maturity: experimental
+  tier: 1
+  languages: [python]
+  buildTargets:
+    - //workers/training_worker/...
+  testTargets:
+    - //workers/training_worker/...
+  artifacts:
+    - type: oci
+      name: training-worker
+  protocols:
+    - mindclade.training.v1
+    - mindclade.artifact.v1
+  dataClassifications:
+    - internal
+    - restricted-biological
+  runtime:
+    kubernetes: true
+    gpu: true

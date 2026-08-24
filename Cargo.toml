@@ -1,0 +1,12 @@
+[workspace]
+resolver = "2"
+members = []
+# artifact_proxy joins members once its crate has sources; excluded so root
+# cargo commands stay functional against the bare scaffold.
+exclude = ["services/artifact_proxy"]
+
+[workspace.package]
+edition = "2021"
+version = "0.0.0"
+license = "LicenseRef-Mindclade-Proprietary"
+publish = false

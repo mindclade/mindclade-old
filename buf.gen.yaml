@@ -1,0 +1,16 @@
+version: v2
+# Plugins are pinned when hermetic generation is wired into Bazel; outputs land
+# under protocols/generated/<language>.
+# plugins:
+#   - remote: buf.build/protocolbuffers/go
+#     out: protocols/generated/go
+#   - remote: buf.build/grpc/go
+#     out: protocols/generated/go
+#   - remote: buf.build/protocolbuffers/python
+#     out: protocols/generated/python
+#   - remote: buf.build/community/neoeinstein-prost
+#     out: protocols/generated/rust
+#   - remote: buf.build/bufbuild/es
+#     out: protocols/generated/typescript
+inputs:
+  - directory: protocols/proto

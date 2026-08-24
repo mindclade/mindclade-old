@@ -1,0 +1,25 @@
+apiVersion: mindclade.dev/v1
+kind: Worker
+metadata:
+  name: inference-worker
+  owner: ml-inference
+spec:
+  maturity: experimental
+  tier: 1
+  languages: [python]
+  buildTargets:
+    - //workers/inference_worker/...
+  testTargets:
+    - //workers/inference_worker/...
+  artifacts:
+    - type: oci
+      name: inference-worker
+  protocols:
+    - mindclade.inference.v1
+    - mindclade.artifact.v1
+  dataClassifications:
+    - internal
+    - restricted-biological
+  runtime:
+    kubernetes: true
+    gpu: true
